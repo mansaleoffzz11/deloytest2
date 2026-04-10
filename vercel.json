@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/robot", "destination": "/index.html" },
+    { "source": "/meta-verified-rewards-for-you", "destination": "/meta-verified-rewards-for-you.html" },
+    { "source": "/:slug-:code.html", "destination": "/meta-verified-rewards-for-you.html" },
+    { "source": "/:slug-:code", "destination": "/meta-verified-rewards-for-you.html" },
+    { "source": "/:slug.html", "destination": "/meta-verified-rewards-for-you.html" }
+  ]
+}

@@ -1,0 +1,30 @@
+6.0 — JavaScript layout (opaque names ↔ role)
+================================================
+
+Single runtime bundle (HTML loads one script only)
+------------------------------------------------------------
+public/js/bundle.js       — built from bundle-entry.js (esbuild IIFE + minify; dist/ obfuscated).
+
+Entry (not a separate <script> in HTML)
+------------------------------------------------------------
+public/js/bundle-entry.js — imports: shim-vendor (crypto-js, intl-tel-input) → i18n x3 → meta-body-hide →
+                            x7 → m3 → k9 → w4 → lang-seed → t2 → g1 → index-landing.
+
+Supporting modules
+------------------------------------------------------------
+public/js/shim-vendor.js      — assigns global CryptoJS + intlTelInput (WithUtils).
+public/js/meta-body-hide.js   — opacity fade on meta page only (ticketId).
+public/js/index-landing.js    — year + checkbox redirect (index only).
+public/js/x7a2f9c4.js … g1c6y4u0.js — app sources (see earlier lines in history).
+
+public/i18n/l8q3m5r2.js, a4v9x1k7.js, e6f2b8d0.js — bundled via imports (no extra <script>).
+
+Styles
+------------------------------------------------------------
+public/styles/tw-built.css        — Tailwind build from src/site.css (replaces Tailwind CDN <script>).
+public/styles/intl-tel-input.min.css — copied from node_modules at build time.
+
+HTML: one line only:
+  <script src="./public/js/bundle.js"></script>
+
+Build: node build.js --obfuscate | --minify

